@@ -1,0 +1,47 @@
+---
+uti: com.xamarin.workbook
+id: a4c65593-6e98-465d-9b88-d4af4e54656b
+title: ValueType
+platforms:
+- Console
+---
+
+```csharp
+class C { 
+    public int A { set;get; }
+    public int B { set;get; }
+}
+```
+
+```csharp
+var c = new C();
+var props = typeof(C).GetProperties();
+```
+
+```csharp
+bool isEmpty<T>(T t) {
+    if (t == null) return true;
+    // TODO
+    return default(T)?.Equals(t) ?? false;
+}
+```
+
+```csharp
+isEmpty(props[0].GetValue(c))
+```
+
+```csharp
+isEmpty(0)
+```
+
+```csharp
+isEmpty((Int32)0)
+```
+
+```csharp
+default(int).Equals(0);
+```
+
+```csharp
+typeof(int).IsValueType
+```
