@@ -1,0 +1,51 @@
+---
+uti: com.xamarin.workbook
+id: 4c569dd8-7e78-49fd-af5b-f45e1e0c875d
+title: GetProperties
+platforms:
+- DotNetCore
+---
+
+```csharp
+class C { 
+    public int X { set;get; }
+    public DateTime D { set;get; }
+    public String S { set;get; }
+}
+```
+
+```csharp
+var c = new C();
+var props = typeof(C).GetProperties();
+props[0].GetValue(c) as int? == 0
+```
+
+```csharp
+props[1].GetValue(c) as DateTime? == DateTime.MinValue
+```
+
+```csharp
+bool isDefault<T>(System.Reflection.PropertyInfo p, T obj) {
+    var value = p.GetValue(obj);
+    switch (value) {
+        case int i :
+            return i == 0;
+        case DateTime d:
+            return d == DateTime.MinValue;
+        default:
+            return value == null;
+    }
+}
+```
+
+```csharp
+isDefault(props[0], c)
+```
+
+```csharp
+isDefault(props[1], c)
+```
+
+```csharp
+isDefault(props[2], c)
+```
