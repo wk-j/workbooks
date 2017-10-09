@@ -25,7 +25,7 @@ class C {
             var hash = 17;
             hash = hash * 23 + A.GetHashCode();
             hash = hash * 23 + B.GetHashCode();
-            hash = hash * 23 + S?.GetHashCode() ?? 0;
+            hash = hash * 23 + (S?.GetHashCode() ?? 1);
             return hash;
         }
     }

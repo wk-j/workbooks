@@ -1,0 +1,38 @@
+---
+uti: com.xamarin.workbook
+id: 3cce4cc1-24a3-457e-8f5f-de7bc011c279
+title: HashCodeUtlity
+platforms:
+- DotNetCore
+---
+
+```csharp
+class HU {
+    private int hash = 17;
+    public HU Hash<T>(T t) {
+        hash = hash * 23 + (t?.GetHashCode() ?? 1);
+        return this;
+    }
+    public int Value() => hash;
+}
+
+class C {
+    public int A { set;get; }
+    public int B { set;get; }
+    public String S { set;get; }
+
+    public override bool Equals(object obj) =>
+        ((obj?.GetHashCode() ?? 0) == GetHashCode());
+
+    public override int GetHashCode() =>
+        new HU().Hash(A).Hash(B).Hash(S).Value();
+}
+
+bool isEmpty<T>(T t) where T: new() => new T().GetHashCode() == t.GetHashCode();
+
+var empty = new C();
+var notEmpty = new C() { A = 100 };
+
+Console.WriteLine(isEmpty(empty));
+Console.WriteLine(isEmpty(notEmpty));
+```
