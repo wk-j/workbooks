@@ -1,0 +1,38 @@
+---
+uti: com.xamarin.workbook
+id: ca2a2fc2-1344-4486-a504-b63e8f578d09
+title: HashCode
+platforms:
+- DotNetCore
+---
+
+```csharp
+using System.Runtime.CompilerServices;
+
+class C {
+
+    public int A { set;get; }
+    public int B { set;get; }
+    public string S { set;get; }
+
+    public override bool Equals(object obj) {
+        if (obj == null) return false;
+        var o = obj as C;
+        return (o.GetHashCode() == GetHashCode());
+    }
+    public override int GetHashCode() {
+        unchecked {
+            var hash = 17;
+            hash = hash * 23 + A.GetHashCode();
+            hash = hash * 23 + B.GetHashCode();
+            hash = hash * 23 + S?.GetHashCode() ?? 0;
+            return hash;
+        }
+    }
+}
+
+var c1 = new C() { A = 10 };
+var c2 = new C() { A = 10 };
+
+c1.Equals(c2);
+```
