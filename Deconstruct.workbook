@@ -1,0 +1,26 @@
+---
+uti: com.xamarin.workbook
+id: 71f9d993-6935-45bd-be43-18bb403c20eb
+title: Deconstruct
+platforms:
+- DotNetCore
+---
+
+```csharp
+class C<T> {
+    public IEnumerable<T> Value { get; }
+    public C(IEnumerable<T> a) => (Value) = a;
+    public void Deconstruct(out T a1, out IEnumerable<T> a2) {
+        a1 = Value.First();
+        a2 = Value.Skip(1);
+    }
+}
+```
+
+```csharp
+var c = new C<int>(new [] { 1,2,3,4,5 });
+```
+
+```csharp
+var (a1,a2) = c;
+```
