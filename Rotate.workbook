@@ -1,0 +1,25 @@
+---
+uti: com.xamarin.workbook
+id: d76f56dc-9253-4f58-a044-0d6b9cfb3f18
+title: Rotate
+platforms:
+- DotNetCore
+---
+
+```csharp
+IEnumerable<T> f1<T>(IEnumerable<T> input) {
+    while (true)
+        foreach (var x in input) yield return x;
+}
+
+IEnumerable<T> f2<T>(IEnumerable<T> input, int n)  => 
+    f1(input).Skip(input.Count() + n).Take(input.Count());
+```
+
+```csharp
+var a1 = f2(new [] {1,2,3}, 2)
+```
+
+```csharp
+var a2 = f2(new [] {1,2,3}, -2)
+```
