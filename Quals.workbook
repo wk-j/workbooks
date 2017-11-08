@@ -1,0 +1,27 @@
+---
+uti: com.xamarin.workbook
+id: bf5429a6-5f55-46d9-b521-6dc2a94a611d
+title: Equals
+platforms:
+- DotNetCore
+---
+
+```csharp
+byte a = 100
+```
+
+```csharp
+int b = 100
+```
+
+```csharp
+a == b
+```
+
+```csharp
+a.Equals(b)
+```
+
+```csharp
+b.Equals(a)
+```
