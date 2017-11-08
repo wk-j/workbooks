@@ -1,0 +1,19 @@
+---
+uti: com.xamarin.workbook
+id: 107d152c-2373-4104-80b9-6d8490a03081
+title: Optional
+platforms:
+- DotNetCore
+---
+
+```csharp
+class Account { 
+    public int Amount { set;get;}
+}
+class Customer { 
+    public Account Account { set;get;}
+}
+
+var customer = new Customer();
+var amount = customer?.Account?.Amount ?? 0;
+```

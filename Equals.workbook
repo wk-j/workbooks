@@ -1,0 +1,7 @@
+---
+uti: com.xamarin.workbook
+id: 2407039a-d949-4936-9bc6-bd28cbff791e
+title: Equals
+platforms:
+- DotNetCore
+---
