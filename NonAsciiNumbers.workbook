@@ -1,0 +1,20 @@
+---
+uti: com.xamarin.workbook
+id: 25c7985c-2f7d-4eb3-9ad1-c09f18150c8e
+title: NonAsciiNumbers
+platforms:
+- DotNetCore
+---
+
+```csharp
+bool TryParse(string text, out int output) {
+    var digits = text.ToCharArray().Select(char.GetNumericValue);
+    return Int32.TryParse(string.Join("", digits), out output);
+}
+
+TryParse("๑๒๓١٢٣১২৩", out int output);
+```
+
+```csharp
+output
+```
